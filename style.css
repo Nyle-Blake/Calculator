@@ -5,6 +5,10 @@ body {
   align-items: center;
 }
 
+p {
+  font-size: 27px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,6 +21,7 @@ body {
   border: 2px solid red;
   height: 75px;
   background-color: brown;
+  padding: 0px 7px;
 }
 
 .calc-shell {
