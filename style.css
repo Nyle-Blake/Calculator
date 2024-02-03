@@ -1,0 +1,61 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.input-screen {
+  border: 2px solid red;
+  height: 75px;
+  background-color: brown;
+}
+
+.calc-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: blue;
+  width: 400px;
+  height: 600px;
+  padding: 10px;
+}
+
+.calc-inner {
+  display: flex;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+}
+
+.num-btn, .operator-btn, .other-btn {
+  border-radius: 10px;
+  background-color: red;
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.num-btn, .other-btn {
+  width: 90px;
+  height: 100px;
+}
+
+.operator-btn {
+  width: 75px;
+  height: 100px;
+}
+
+.operators {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,17 +1,27 @@
+const userInput = document.querySelector('.input')
+const calcResult = document.querySelector('.result')
+const numBtn = Array.from(document.querySelectorAll('.num-btn'))
+const operatorBtn = Array.from(document.querySelectorAll('.operator-btn'))
+const otherBtn = Array.from(document.querySelectorAll('.other-btn'))
+
+const clearInputScreen = () => {
+  return userInput.textContent = ''
+}
+
 const addition = (a, b) => {
-  return a + b;
+  return parseFloat(a) + parseFloat(b);
 };
 
 const subtraction = (a, b) => {
-  return a - b;
+  return parseFloat(a) - parseFloat(b);
 };
 
 const multiplication = (a, b) => {
-  return a * b;
+  return parseFloat(a) * parseFloat(b);
 };
 
 const division = (a, b) => {
-  return a / b;
+  return parseFloat(a) / parseFloat(b);
 };
 
 const operate = (a, b, operator) => {
