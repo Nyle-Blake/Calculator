@@ -5,8 +5,8 @@ body {
   align-items: center;
 }
 
-p {
-  font-size: 27px;
+.lower-input, .upper-input {
+  font-size: 32px;
 }
 
 .container {
@@ -18,9 +18,12 @@ p {
 }
 
 .input-screen {
-  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid #e87417;
   height: 75px;
-  background-color: brown;
+  background-color: #a55310;
   padding: 0px 7px;
 }
 
@@ -28,10 +31,11 @@ p {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background-color: blue;
+  background-color: #696c67;
   width: 400px;
   height: 600px;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .calc-inner {
@@ -45,9 +49,9 @@ p {
 
 .num-btn, .operator-btn, .other-btn {
   border-radius: 10px;
-  background-color: red;
+  background-color: #e87417;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 34px;
 }
 
 .num-btn, .other-btn {

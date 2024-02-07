@@ -6,65 +6,89 @@ const acBtn = document.querySelector('#ac-btn')
 const decimalBtn = document.querySelector('#decimal-btn')
 const equalsBtn = document.querySelector('#equals-btn')
 
-let operator;
-let firstNum, secondNum, round = 1;
+let firstNum, secondNum, operator, round = 1; 
+// Because there is a global variable for firstNum, secondNum, and operator only one calculation involving 2 numbers and an operator can be done at a time
+// Any calculation after but include the result of the previous calculation as firstNum
+// Attempting to use more than one operator will replace the previous operator with the new one and remove the previously selected secondNum
 
-const addDigit = (number) => {
-  lowerInput.innerText.concat("", number)
+const addDigit = (numberValue) => {
+  lowerInput.innerText = lowerInput.innerText.concat("", numberValue)
 }
 
 const addOperator = (operatorValue) => {
-  if (lowerInput.textContent) {
+  if (lowerInput.innerText) {
     round = 1;
     operator = operatorValue;
-    firstNum = lowerInput.textContent;
-    upperInput.textContent = lowerInput.textContent.concat("", operator);
-    lowerInput.textContent = '';
+    firstNum = lowerInput.innerText;
+    upperInput.innerText = lowerInput.innerText.concat(" ", operator);
+    lowerInput.innerText = '';
   }
 }
 
 const calculate = (firstNum, secondNum, operator) => {
   let result;
-  let a = firstNum;
-  let b = secondNum;
+  let a = parseFloat(firstNum);
+  let b = parseFloat(secondNum);
+  
+  console.log(operator)
+  // if (operator = '+') { result = a + b}
+  // else if (operator = '-') { result = a - b}
+  // else if (operator = '*') { result = a * b}
+  // else if (operator = '/') { result = a / b}
+  // else { } // no operator selected so do nothing
 
-  if (operator = '+') { result = a + b}
-  else if (operator = '-') { result = a - b}
-  else if (operator = '*') { result = a * b}
-  else if (operator = '/') { result = a / b}
-  else { } // no operator selected so do nothing
+  switch(operator) {
+    case '+':
+      result = a + b;
+      break;
+    case '-':
+      result = a - b;
+      break;
+    case '*':
+      result = a * b;
+      break;
+    case '/':
+      result = a / b;
+      break;
+    default:
+
+  }
 
   return result
 }
 
 const getResult = () => {
   if (operator && round == 1) {
-    upperInput.textContent = upperInput.textContent.concat("", lowerInput.textContent)
-    secondNum = lowerInput.textContent
-    lowerInput.textContent = calculate(firstNum, secondNum, operator)
+    upperInput.innerText = upperInput.innerText.concat("", lowerInput.innerText)
+    secondNum = lowerInput.innerText
+    lowerInput.innerText = calculate(firstNum, secondNum, operator)
     round++
+
   } else if (operator) {
-    upperInput.textContent = `${lowerInput.textContent} ${operator} ${secondNum}`
-    firstNum = lowerInput.textContent
-    lowerInput.textContent = operator(firstNum, secondNum)
+    upperInput.innerText = `${lowerInput.innerText} ${operator} ${secondNum}`
+    firstNum = lowerInput.innerText
+    lowerInput.innerText = calculate(firstNum, secondNum, operator)
+
   } else {
     //do nothing because there is no operator
   }
 }
 
 const deciamlPoint = () => {
-  if (!(lowerInput.textContent.includes('.') )) {
-    lowerInput.textContent = lowerInput.concat('.')
+  if (!(lowerInput.innerText.includes('.') )) {
+    lowerInput.innerText = lowerInput.innerText.concat('.')
   }
 };
 
 const clearInputScreen = () => {
-  upperInput.textContent = ''
-  lowerInput.textContent = ''
+  upperInput.innerText = ''
+  lowerInput.innerText = ''
   firstNum = undefined
   secondNum = undefined
   round = 1
 };
+
+// event listeners :
 
 numBtn.forEach((button) => {
   button.addEventListener('click', () => {
@@ -82,12 +106,10 @@ acBtn.addEventListener('click', () => {
   clearInputScreen()
 });
 
-deciamlPoint.addEventListener('click', () => {
+decimalBtn.addEventListener('click', () => {
   deciamlPoint()
 })
 
-// equalsBtn.addEventListener('click', () => {
-//   clearInputScreen()
-//   console.log(upperInput.textContent)
-//   console.log(currentOperator)
-// })
+equalsBtn.addEventListener('click', () => {
+  getResult()
+})
