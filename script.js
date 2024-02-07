@@ -29,13 +29,6 @@ const calculate = (firstNum, secondNum, operator) => {
   let result;
   let a = parseFloat(firstNum);
   let b = parseFloat(secondNum);
-  
-  console.log(operator)
-  // if (operator = '+') { result = a + b}
-  // else if (operator = '-') { result = a - b}
-  // else if (operator = '*') { result = a * b}
-  // else if (operator = '/') { result = a / b}
-  // else { } // no operator selected so do nothing
 
   switch(operator) {
     case '+':
@@ -51,7 +44,7 @@ const calculate = (firstNum, secondNum, operator) => {
       result = a / b;
       break;
     default:
-
+      // no operator selected so do nothing
   }
 
   return result
